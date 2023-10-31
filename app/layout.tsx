@@ -14,8 +14,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang='en'>
       <body className={roboto.className}>
-        <Sidebar />
-        {children}
+        <main className='relative z-0 overflow-hidden min-h-[100dvh] bg-neutral-900'>
+          <Sidebar />
+          {children}
+        </main>
       </body>
     </html>
   );
