@@ -1,6 +1,8 @@
-import { Bookmark, Dot, Eye, Forward, Heart, MessageCircle, MoreHorizontal, Share } from 'lucide-react';
+import { MoreHorizontal, Dot } from 'lucide-react';
 import Link from 'next/link';
 import React from 'react';
+import ActionPost from './action-post';
+import Image from 'next/image';
 
 const PostCard = () => {
   return (
@@ -21,36 +23,24 @@ const PostCard = () => {
               <Dot /> 20h
             </p>
           </div>
-          <MoreHorizontal size={20} className='hover:bg-neutral-700 rounded-full cursor-pointer' />
+          <div className=' text-neutral-400 hover:bg-neutral-800/90 p-1 rounded-full cursor-pointer'>
+            <MoreHorizontal size={20} />
+          </div>
         </div>
         <div className='flex flex-col'>
           <h1 className='text-neutral-200'>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur natus suscipit deserunt, illum repellat
             reprehenderit non magni fugiat ad asperiores!
           </h1>
+          <Image
+            src={'/landscape.jpg'}
+            alt='test'
+            height={550}
+            width={550}
+            className='rounded-[32px] py-3 object-cover w-full h-auto'
+          />
         </div>
-        <div className='flex justify-between mt-2'>
-          <div className='text-neutral-400 text-sm flex gap-x-2'>
-            <MessageCircle size={18} />
-            56
-          </div>
-          <div className='text-neutral-400 text-sm flex gap-x-2'>
-            <Forward size={18} />
-            72
-          </div>
-          <div className='text-neutral-400 text-sm flex gap-x-2'>
-            <Heart size={18} />
-            365
-          </div>
-          <div className='text-neutral-400 text-sm flex gap-x-2'>
-            <Eye size={18} />
-            2356
-          </div>
-          <div className='flex gap-x-4'>
-            <Bookmark size={18} />
-            <Share size={18} />
-          </div>
-        </div>
+        <ActionPost />
       </div>
     </div>
   );
