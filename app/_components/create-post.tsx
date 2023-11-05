@@ -39,7 +39,7 @@ const CreatePost = () => {
       <div className='flex w-16'>
         <div className='relative bg-neutral-600 rounded-full w-10 h-10'></div>
       </div>
-      <div className='w-full flex flex-col gap-y-4'>
+      <div className='w-full flex flex-col gap-y-2'>
         <textarea
           onInput={setTextareaHeight}
           ref={textareaRef}
