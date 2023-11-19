@@ -7,7 +7,6 @@ import PostCard from './_components/post-card';
 const Home = () => {
   return (
     <div className='md:pl-[22%] md:pr-[30%] w-full h-auto pb-32'>
-      <RightBar />
       <HomeHeader />
       <CreatePost />
       {/* <PostFloatButton /> */}
