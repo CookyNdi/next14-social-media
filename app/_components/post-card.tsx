@@ -32,13 +32,9 @@ const PostCard = () => {
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur natus suscipit deserunt, illum repellat
             reprehenderit non magni fugiat ad asperiores!
           </h1>
-          <Image
-            src={'/landscape.jpg'}
-            alt='test'
-            height={550}
-            width={550}
-            className='rounded-[32px] py-3 object-cover w-full h-auto'
-          />
+          <div className='rounded-[32px] my-3 overflow-hidden'>
+            <Image src={'/square.jpg'} alt='test' height={550} width={550} className='object-cover w-full h-auto' />
+          </div>
         </div>
         <ActionPost />
       </div>

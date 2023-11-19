@@ -55,7 +55,7 @@ const CreatePost = () => {
               <X className='text-neutral-400 hover:text-neutral-200' size={24} />
             </div>
             <Image
-              className='rounded-3xl pb-3 object-cover w-full h-auto'
+              className='rounded-3xl mb-3 object-cover w-full h-auto'
               src={image[0]}
               alt={image[0]}
               height={550}
