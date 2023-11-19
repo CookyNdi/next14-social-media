@@ -1,3 +1,13 @@
+## Wellcome
+This is my first project duplicating an application without looking at a tutorial. I made this based on what I saw on Twitter and tried to apply it to this project.
+
+## Roadmap
+-> Slicing (Done)
+-> Make ERD (Wip) 
+-> Make Backend
+-> Integration 
+-> create several components that are skipped during slicing
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
