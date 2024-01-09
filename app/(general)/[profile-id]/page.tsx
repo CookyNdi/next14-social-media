@@ -7,7 +7,7 @@ import PostCard from '@/components/postCard/post-card';
 
 const ProfilePage = () => {
   return (
-    <div className='relative md:pl-[22%] md:pr-[30%] w-full h-auto pb-32'>
+    <div className='md:pl-[22%] md:pr-[30%] w-full h-auto pb-32'>
       <ProfileHeader />
       <Image src={'/landscape.jpg'} alt='banner' width={550} height={550} className='w-full h-48 object-cover' />
       <ProfileHero />

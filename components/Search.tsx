@@ -1,6 +1,6 @@
 'use client';
 import React, { useState } from 'react';
-import { Search } from 'lucide-react';
+import { IoMdSearch } from 'react-icons/io';
 import { useRouter } from 'next/navigation';
 
 const SearchComponent = () => {
@@ -16,12 +16,12 @@ const SearchComponent = () => {
       <input
         onChange={(e) => setQuery(e.target.value)}
         value={query}
-        onKeyDown={(e)=> enterHandler(e)}
+        onKeyDown={(e) => enterHandler(e)}
         type='text'
         className='w-full bg-neutral-700 text-neutral-200 p-2 px-4 ml-6 focus:outline-none'
         placeholder='Search'
       />
-      <Search size={20} className='absolute top-[10px] left-3 text-neutral-400' />
+      <IoMdSearch size={20} className='absolute top-[10px] left-3 text-neutral-400' />
     </div>
   );
 };

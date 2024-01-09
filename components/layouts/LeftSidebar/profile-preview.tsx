@@ -1,5 +1,5 @@
 import React from 'react';
-import { ChevronDown } from 'lucide-react';
+import { IoIosArrowDown } from 'react-icons/io';
 import { twMerge } from 'tailwind-merge';
 
 const ProfilePreview = () => {
@@ -16,7 +16,7 @@ const ProfilePreview = () => {
           <h1 className='text-neutral-400 text-sm'>@CookyNdi</h1>
         </div>
       </div>
-      <ChevronDown size={24} className='mr-4' />
+      <IoIosArrowDown size={24} className='mr-4' />
     </button>
   );
 };
