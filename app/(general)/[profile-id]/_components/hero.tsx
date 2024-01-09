@@ -1,4 +1,5 @@
-import Button from '@/components/Button';
+
+import { Button } from '@/components/ui/button';
 import Image from 'next/image';
 import React from 'react';
 
@@ -9,7 +10,7 @@ const ProfileHero = () => {
         <Image src={'/square.jpg'} alt='pfp' width={550} height={550} className='object-cover' />
       </div>
       <div className='w-full flex justify-end'>
-        <Button className='w-36 py-2'>Follow</Button>
+        <Button variant='purpleSecondary' className='w-36 py-2'>Follow</Button>
       </div>
       <div className='mt-8'>
         <h1 className='text-xl text-white font-bold'>CookyNdi</h1>

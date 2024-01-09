@@ -1,5 +1,5 @@
 'use client';
-import Button from '@/components/Button';
+import { Button } from '@/components/ui/button';
 import { CalendarDays, FileImage, X } from 'lucide-react';
 import Image from 'next/image';
 import React, { useEffect, useRef, useState } from 'react';
@@ -43,7 +43,7 @@ const CreatePost = () => {
         <textarea
           onInput={setTextareaHeight}
           ref={textareaRef}
-          className='min-h-[50px] bg-transparent px-4 focus:outline-none resize-none'
+          className='min-h-[50px] bg-transparent text-neutral-200 px-4 focus:outline-none resize-none'
           placeholder='What is happening?!'
         ></textarea>
         {image !== null && (
@@ -83,7 +83,7 @@ const CreatePost = () => {
               multiple={false}
             />
           </div>
-          <Button className='w-28 text-sm font-semibold p-2'>Post</Button>
+          <Button variant='purpleSecondary' className='w-28 text-sm font-semibold p-2'>Post</Button>
         </div>
       </div>
     </div>

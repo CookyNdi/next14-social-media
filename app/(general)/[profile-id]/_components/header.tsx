@@ -4,7 +4,7 @@ import React from 'react'
 const ProfileHeader = () => {
   return (
     <div className='w-full h-14 sticky z-[99] top-0 flex items-center border-b border-neutral-700 backdrop-blur-[2px] bg-neutral-900/80'>
-        <div className='p-4'>
+        <div className='p-4 text-neutral-200 cursor-pointer'>
           <ArrowLeft />
         </div>
         <div>

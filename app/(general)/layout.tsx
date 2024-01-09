@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { Roboto } from 'next/font/google';
-import './globals.css';
+import '../globals.css';
 import Sidebar from '@/components/layouts/LeftSidebar/sidebar';
 import RightBar from '@/components/layouts/RightSideBar/right-bar';
 import MobileNavbar from '@/components/layouts/MobileNavbar';
