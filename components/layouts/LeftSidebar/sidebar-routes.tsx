@@ -1,28 +1,28 @@
 'use client';
-import React from 'react';
-import { Bookmark, Home, Search, User2 } from 'lucide-react';
+import { FaHome, FaRegBookmark, FaUser } from 'react-icons/fa';
+import { IoSearch } from 'react-icons/io5';
 
 import SidebarItem from './sidebar.items';
 import { Button } from '@/components/ui/button';
 
 export const routes = [
   {
-    icon: Home,
+    icon: FaHome,
     label: 'Home',
     href: '/',
   },
   {
-    icon: Search,
+    icon: IoSearch,
     label: 'Explore',
     href: '/explore/search',
   },
   {
-    icon: Bookmark,
+    icon: FaRegBookmark,
     label: 'Saved',
     href: '/saved',
   },
   {
-    icon: User2,
+    icon: FaUser,
     label: 'Profile',
     href: '/1',
   },
@@ -34,7 +34,9 @@ const SidebarRoutes = () => {
       {routes.map((route) => (
         <SidebarItem key={route.href} icon={route.icon} label={route.label} href={route.href} />
       ))}
-      <Button variant='purpleSecondary' className='mt-4'>Post</Button>
+      <Button variant='purpleSecondary' className='mt-4'>
+        Post
+      </Button>
     </div>
   );
 };

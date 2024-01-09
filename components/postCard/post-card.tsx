@@ -1,8 +1,9 @@
-import { MoreHorizontal, Dot } from 'lucide-react';
-import Link from 'next/link';
-import React from 'react';
-import ActionPost from './action-post';
+import { LuDot } from 'react-icons/lu';
+import { HiOutlineDotsHorizontal } from 'react-icons/hi';
 import Image from 'next/image';
+import Link from 'next/link';
+
+import ActionPost from './action-post';
 
 const PostCard = () => {
   return (
@@ -20,11 +21,11 @@ const PostCard = () => {
               @CookyNdi
             </Link>
             <p className='text-neutral-400 text-sm flex items-center'>
-              <Dot /> 20h
+              <LuDot /> 21h
             </p>
           </div>
           <div className=' text-neutral-400 hover:bg-neutral-800/90 p-1 rounded-full cursor-pointer'>
-            <MoreHorizontal size={20} />
+            <HiOutlineDotsHorizontal size={20} />
           </div>
         </div>
         <div className='flex flex-col'>

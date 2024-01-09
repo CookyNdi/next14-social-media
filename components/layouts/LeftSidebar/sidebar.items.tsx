@@ -1,12 +1,12 @@
 'use client';
 import React from 'react';
 import Link from 'next/link';
-import { LucideIcon } from 'lucide-react';
-import { usePathname} from 'next/navigation';
+import { IconType } from 'react-icons';
+import { usePathname } from 'next/navigation';
 import { twMerge } from 'tailwind-merge';
 
 type SidebarItemProps = {
-  icon: LucideIcon;
+  icon: IconType;
   href: string;
   label: string;
 };
@@ -24,11 +24,7 @@ const SidebarItem: React.FC<SidebarItemProps> = ({ icon: Icon, href, label }) =>
       )}
     >
       <div className='flex items-center gap-x-3 py-4'>
-        <Icon
-          strokeWidth={isActive ? 2.5 : 1.5}
-          size={24}
-          className={twMerge('text-neutral-400', isActive && 'text-neutral-200')}
-        />
+        <Icon size={24} className={twMerge('text-neutral-400', isActive && 'text-neutral-200')} />
         {label}
       </div>
     </Link>

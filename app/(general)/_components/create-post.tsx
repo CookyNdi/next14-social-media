@@ -1,6 +1,8 @@
 'use client';
 import { Button } from '@/components/ui/button';
-import { CalendarDays, FileImage, X } from 'lucide-react';
+import { FaCalendarAlt } from 'react-icons/fa';
+import { FaImage } from 'react-icons/fa6';
+import { IoIosClose } from 'react-icons/io';
 import Image from 'next/image';
 import React, { useEffect, useRef, useState } from 'react';
 import { twMerge } from 'tailwind-merge';
@@ -52,7 +54,7 @@ const CreatePost = () => {
               className='w-8 h-8 rounded-full bg-neutral-800 flex items-center justify-center absolute top-4 right-4 cursor-pointer z-10'
               onClick={() => setImage(null)}
             >
-              <X className='text-neutral-400 hover:text-neutral-200' size={24} />
+              <IoIosClose className='text-neutral-400 hover:text-neutral-200' size={24} />
             </div>
             <Image
               className='rounded-3xl mb-3 object-cover w-full h-auto'
@@ -63,17 +65,22 @@ const CreatePost = () => {
             />
           </div>
         )}
-        <div className={twMerge('flex justify-between bg-neutral-900 sticky bottom-0', image !== null && 'py-4 border-t border-neutral-700')}>
+        <div
+          className={twMerge(
+            'flex justify-between bg-neutral-900 sticky bottom-0',
+            image !== null && 'py-4 border-t border-neutral-700'
+          )}
+        >
           <div className='flex items-center gap-x-4'>
             <label
               htmlFor='dropzone-file'
-              className='text-purple-600 cursor-pointer hover:text-purple-400'
+              className='text-neutral-300 cursor-pointer hover:text-purple-400'
               title='add photo'
             >
-              <FileImage size={22} />
+              <FaImage size={22} />
             </label>
-            <div className='text-purple-600 cursor-pointer hover:text-purple-400' title='schedule'>
-              <CalendarDays size={22} />
+            <div className='text-neutral-300 cursor-pointer hover:text-purple-400' title='schedule'>
+              <FaCalendarAlt size={22} />
             </div>
             <input
               onChange={(e) => handleInputImageChange(e)}
@@ -83,7 +90,9 @@ const CreatePost = () => {
               multiple={false}
             />
           </div>
-          <Button variant='purpleSecondary' className='w-28 text-sm font-semibold p-2'>Post</Button>
+          <Button variant='purpleSecondary' className='w-28 text-sm font-semibold p-2'>
+            Post
+          </Button>
         </div>
       </div>
     </div>

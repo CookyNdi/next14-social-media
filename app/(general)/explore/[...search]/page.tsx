@@ -1,7 +1,7 @@
-import SearchComponent from '@/components/Search';
-import React from 'react';
+import { FaArrowLeft } from 'react-icons/fa';
+
 import TrendingForYouSearch from './_component/trendingForYou';
-import { ArrowLeft } from 'lucide-react';
+import SearchComponent from '@/components/Search';
 import SearchContent from './_component/SearchContent';
 
 type SearchPageProps = {
@@ -18,8 +18,8 @@ const SearchPage: React.FC<SearchPageProps> = ({ searchParams }) => {
       <div className='p-4 flex flex-col gap-y-2'>
         <div className='flex'>
           {query && (
-            <div className='p-2'>
-              <ArrowLeft />
+            <div className='p-2 text-neutral-200 cursor-pointer'>
+              <FaArrowLeft />
             </div>
           )}
           <SearchComponent />

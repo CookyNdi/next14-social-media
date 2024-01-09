@@ -1,6 +1,6 @@
+import { HiOutlineDotsHorizontal } from 'react-icons/hi';
+
 import PostCard from '@/components/postCard/post-card';
-import { MoreHorizontal } from 'lucide-react';
-import React from 'react';
 
 const SavedPage = () => {
   return (
@@ -11,7 +11,7 @@ const SavedPage = () => {
           <p className='text-sm text-neutral-400'>@CookyNdi</p>
         </div>
         <div className=' text-neutral-400 hover:bg-neutral-800/90 p-1 rounded-full cursor-pointer'>
-          <MoreHorizontal size={20} />
+          <HiOutlineDotsHorizontal size={20} />
         </div>
       </div>
       <PostCard />

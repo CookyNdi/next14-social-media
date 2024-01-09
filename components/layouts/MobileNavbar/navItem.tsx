@@ -1,11 +1,11 @@
-import { LucideIcon } from 'lucide-react';
+import { IconType } from 'react-icons';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import React from 'react';
 import { twMerge } from 'tailwind-merge';
 
 type NavItemProps = {
-  icon: LucideIcon;
+  icon: IconType;
   href: string;
   label: string;
 };
@@ -19,10 +19,11 @@ const NavItem: React.FC<NavItemProps> = ({ href, icon: Icon, label }) => {
       href={href}
       title={label}
       className={twMerge(
-        'relative h-full flex flex-1 justify-center items-center text-neutral-400 cursor-pointer hover:bg-neutral-800 capitalize tracking-wide'
-      , isActive && "text-white")}
+        'relative h-full flex flex-1 justify-center items-center text-neutral-400 cursor-pointer hover:bg-neutral-800 capitalize tracking-wide',
+        isActive && 'text-white'
+      )}
     >
-      <Icon />
+      <Icon size={24} />
     </Link>
   );
 };
