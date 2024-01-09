@@ -3,7 +3,7 @@ import React from 'react';
 import { Bookmark, Home, Search, User2 } from 'lucide-react';
 
 import SidebarItem from './sidebar.items';
-import Button from '@/components/Button';
+import { Button } from '@/components/ui/button';
 
 export const routes = [
   {
@@ -34,7 +34,7 @@ const SidebarRoutes = () => {
       {routes.map((route) => (
         <SidebarItem key={route.href} icon={route.icon} label={route.label} href={route.href} />
       ))}
-      <Button className='mt-4'>Post</Button>
+      <Button variant='purpleSecondary' className='mt-4'>Post</Button>
     </div>
   );
 };
