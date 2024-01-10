@@ -15,15 +15,16 @@ enum UserRole {
   USER
 }
 
-model Users {
+model User {
   id                    String                 @id @default(cuid())
   name                  String?
-  username              String                 @unique
+  username              String?                @unique
   email                 String                 @unique
   bio                   String?                @db.VarChar(300)
   banner_image          String?                @db.Text
   image                 String?                @db.Text
   role                  UserRole               @default(USER)
+  emailVerified         DateTime?
   isTwoFactorEnabled    Boolean                @default(false)
   twofactorConfirmation TwoFactorConfirmation?
   createdAt             DateTime               @default(now())
@@ -34,6 +35,26 @@ model Users {
   FollowerMutuals       Mutuals[]              @relation("Follower")
   FollowingMutuals      Mutuals[]              @relation("Following")
   Liked                 Liked[]
+  Account               Account[]
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
 }
 
 model Mutuals {
@@ -41,8 +62,8 @@ model Mutuals {
   follower    String
   following   String
   createdAt   DateTime @default(now())
-  followerId  Users    @relation(name: "Follower", fields: [follower], references: [id], onDelete: Cascade)
-  followingId Users    @relation(name: "Following", fields: [following], references: [id], onDelete: Cascade)
+  followerId  User     @relation(name: "Follower", fields: [follower], references: [id], onDelete: Cascade)
+  followingId User     @relation(name: "Following", fields: [following], references: [id], onDelete: Cascade)
 }
 
 model Posts {
@@ -59,7 +80,7 @@ model Posts {
   repost_id     String?
   createdAt     DateTime    @default(now())
   updatedAt     DateTime    @updatedAt
-  user          Users       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user          User        @relation(fields: [userId], references: [id], onDelete: Cascade)
   Comments      Comments[]
   PostImage     PostImage[]
   Hastags       Hastags[]
@@ -70,7 +91,7 @@ model Posts {
 model Liked {
   userId String
   postId String
-  user   Users  @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
   post   Posts  @relation(fields: [postId], references: [id], onDelete: Cascade)
 
   @@id([userId, postId])
@@ -86,7 +107,7 @@ model Comments {
   parent_comment String?
   createdAt      DateTime    @default(now())
   updatedAt      DateTime    @updatedAt
-  user           Users       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user           User        @relation(fields: [userId], references: [id], onDelete: Cascade)
   post           Posts       @relation(fields: [postId], references: [id], onDelete: Cascade)
   Bookmarks      Bookmarks[]
 }
@@ -114,7 +135,7 @@ model Bookmarks {
   postId    String?
   commentId String?
   createdAt DateTime  @default(now())
-  user      Users     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
   post      Posts?    @relation(fields: [postId], references: [id], onDelete: Cascade)
   comment   Comments? @relation(fields: [commentId], references: [id], onDelete: Cascade)
 }
@@ -141,7 +162,7 @@ model TwoFactorConfirmation {
   id String @id @default(cuid())
 
   userId String
-  user   Users  @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([userId])
 }

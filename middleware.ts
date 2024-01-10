@@ -1,4 +1,5 @@
 import NextAuth from 'next-auth';
+import { pathToRegexp } from 'path-to-regexp';
 
 import authConfig from '@/auth.config';
 import { DEFAULT_LOGIN_REDIRECT, apiAuthPrefix, authRoutes, publicRoutes } from '@/routes';
@@ -8,12 +9,18 @@ const { auth } = NextAuth(authConfig);
 export default auth((req) => {
   const { nextUrl } = req;
   const isLoggedIn = !!req.auth;
+  console.log('REQ AUTH - ', isLoggedIn);
 
   const isApiAuthRoute = nextUrl.pathname.startsWith(apiAuthPrefix);
   const isPublicRoute = publicRoutes.includes(nextUrl.pathname);
   const isAuthRoute = authRoutes.includes(nextUrl.pathname);
+  const isProfileRoute = pathToRegexp('/:profile_id');
 
   if (isApiAuthRoute) {
+    return null;
+  }
+
+  if (isProfileRoute) {
     return null;
   }
 
