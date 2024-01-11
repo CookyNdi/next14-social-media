@@ -1,9 +1,10 @@
+import crypto from 'crypto';
 import NextAuth from 'next-auth';
 import { PrismaAdapter } from '@auth/prisma-adapter';
 
 import { db } from '@/lib/db';
 import authConfig from '@/auth.config';
-import { getUserById } from '@/lib/data/user';
+import { getUserById, getUserByUsername } from '@/lib/data/user';
 import { UserRole } from '@prisma/client';
 
 export const {
@@ -19,10 +20,27 @@ export const {
   },
   events: {
     async linkAccount({ user }) {
-      await db.user.update({
-        where: { id: user.id },
-        data: { username: user.name, emailVerified: new Date() },
-      });
+      const aditionalId = crypto.randomInt(10_000, 100_000).toString();
+      let username = `@Andromeda_${aditionalId}`;
+      if (user.name) {
+        const rawUsername = user.name.replaceAll(' ', '_');
+        const existingUsername = await getUserByUsername(`@${rawUsername}`);
+        if (existingUsername) {
+          username = `@${rawUsername}${aditionalId}`;
+        } else {
+          username = `@${rawUsername}`;
+        }
+
+        await db.user.update({
+          where: { id: user.id },
+          data: { username, emailVerified: new Date() },
+        });
+      } else {
+        await db.user.update({
+          where: { id: user.id },
+          data: { username, emailVerified: new Date() },
+        });
+      }
     },
   },
   callbacks: {
