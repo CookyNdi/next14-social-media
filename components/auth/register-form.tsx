@@ -29,7 +29,8 @@ export const RegisterForm = () => {
       backButtonHref='/auth/login'
       showSocial
     >
-      <Form {...form}>
+      <div></div>
+      {/* <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className='space-y-6'>
           <div className='space-y-4'>
             <FormField
@@ -63,7 +64,7 @@ export const RegisterForm = () => {
             Create an account
           </Button>
         </form>
-      </Form>
+      </Form> */}
     </CardWrapper>
   );
 };
