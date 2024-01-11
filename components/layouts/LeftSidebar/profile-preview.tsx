@@ -1,8 +1,10 @@
+import { auth } from '@/auth';
 import React from 'react';
 import { IoIosArrowDown } from 'react-icons/io';
 import { twMerge } from 'tailwind-merge';
 
-const ProfilePreview = () => {
+const ProfilePreview = async () => {
+  const session = await auth();
   return (
     <button
       className={twMerge(
@@ -12,7 +14,7 @@ const ProfilePreview = () => {
       <div className='flex items-center gap-x-4 py-2'>
         <div className='relative bg-neutral-600 rounded-full w-10 h-10'></div>
         <div className='flex flex-col text-left'>
-          <h1 className='w-32 text-neutral-200 text-base truncate'>CookyNdi</h1>
+          <h1 className='w-32 text-neutral-200 text-base truncate'>{session?.user?.name}</h1>
           <h1 className='text-neutral-400 text-sm'>@CookyNdi</h1>
         </div>
       </div>
