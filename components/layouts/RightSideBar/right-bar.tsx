@@ -5,6 +5,7 @@ import Footter from './footer';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { auth } from '@/auth';
+import { LogoutButton } from '@/components/auth/logout-button';
 
 const RightBar = async () => {
   const session = await auth();
@@ -14,10 +15,16 @@ const RightBar = async () => {
       <SearchComponent />
       <TrendsForYou />
       <Footter />
-      {!session?.user && (
+      {!session?.user ? (
         <Button variant='purpleSecondary' className='mt-4'>
           <Link href='/auth/login'>Login</Link>
         </Button>
+      ) : (
+        <LogoutButton>
+          <Button variant='purpleSecondary' className='mt-4'>
+            Logout
+          </Button>
+        </LogoutButton>
       )}
     </div>
   );
