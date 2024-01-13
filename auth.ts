@@ -56,8 +56,8 @@ export const {
         session.user.email = token.email;
         session.user.username = token.username as string;
       }
-      console.log({ token });
-      console.log({ session });
+      // console.log({ token });
+      // console.log({ session });
       return session;
     },
     async jwt({ token }) {
