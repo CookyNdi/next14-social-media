@@ -24,7 +24,7 @@ export const routes = [
   {
     icon: FaUser,
     label: 'Profile',
-    href: '/1',
+    href: '/CookyNdi',
   },
 ];
 
