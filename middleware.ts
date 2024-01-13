@@ -2,25 +2,21 @@ import NextAuth from 'next-auth';
 import { pathToRegexp } from 'path-to-regexp';
 
 import authConfig from '@/auth.config';
-import { DEFAULT_LOGIN_REDIRECT, apiAuthPrefix, authRoutes, publicRoutes } from '@/routes';
+import { DEFAULT_LOGIN_REDIRECT, apiAuthPrefix, authRoutes, postRoute, profileRoute, publicRoutes } from '@/routes';
 
 const { auth } = NextAuth(authConfig);
 
 export default auth((req) => {
   const { nextUrl } = req;
   const isLoggedIn = !!req.auth;
-  console.log('IS LOGGEDIN - ', req.auth);
 
   const isApiAuthRoute = nextUrl.pathname.startsWith(apiAuthPrefix);
   const isPublicRoute = publicRoutes.includes(nextUrl.pathname);
   const isAuthRoute = authRoutes.includes(nextUrl.pathname);
-  const isProfileRoute = pathToRegexp('/:profile_id');
+  const isProfileRoute = !!pathToRegexp(profileRoute).exec(nextUrl.pathname);
+  const isPostRoute = !!pathToRegexp(postRoute).exec(nextUrl.pathname);
 
   if (isApiAuthRoute) {
-    return null;
-  }
-
-  if (isProfileRoute) {
     return null;
   }
 
@@ -31,7 +27,7 @@ export default auth((req) => {
     return null;
   }
 
-  if (!isLoggedIn && !isPublicRoute) {
+  if (!isLoggedIn && !isPostRoute) {
     let callbackUrl = nextUrl.pathname;
     if (nextUrl.search) {
       callbackUrl += nextUrl.search;
