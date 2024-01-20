@@ -4,7 +4,7 @@ import { db } from '@/lib/db';
 import { currentUser } from '@/lib/helpers/auth';
 import { PostStatus } from '@prisma/client';
 
-export default async function createPost(content: string, image?: string) {
+export default async function createPost(content: string, image?: string | null) {
   const user = await currentUser();
 
   if (!user) return console.log('ERROR AUTH');

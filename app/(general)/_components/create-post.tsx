@@ -57,7 +57,7 @@ const CreatePost = () => {
           files,
         });
       }
-      createPost(content, respone[0].url);
+      createPost(content, respone.length > 0 ? respone[0].url : null);
       setImage(null);
       setFiles(null);
       setContent('');
