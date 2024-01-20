@@ -17,7 +17,7 @@ const PostCard = ({ data }: { data: postDataType }) => {
           <Image src={data.profileImage || ''} alt='Profile' fill />
         </div>
       </div>
-      <div className='flex flex-col'>
+      <div className='w-full flex flex-col'>
         <div className='flex items-center justify-between'>
           <div className='flex items-center'>
             <Link href={`/${data.username?.slice(1)}`} className='text-neutral-200 text-lg mr-2'>
@@ -36,7 +36,7 @@ const PostCard = ({ data }: { data: postDataType }) => {
         </div>
         <div className='flex flex-col'>
           <h1 className='text-neutral-200'>{data.content}</h1>
-          {data.images.length >= 0 && (
+          {data.images.length > 0 && (
             <div className='rounded-[32px] my-3 overflow-hidden'>
               <Image
                 src={data.images[0].image_url}
