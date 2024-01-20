@@ -1,9 +1,9 @@
 import Image from 'next/image';
 
-import { User } from '@/types/user';
+import { UserDataType } from '@/types/user';
 import { Button } from '@/components/ui/button';
 
-const ProfileHero = ({ user }: { user: User }) => {
+const ProfileHero = ({ user }: { user: UserDataType }) => {
   return (
     <div className='relative w-full py-2 px-4'>
       <div className='absolute -top-[60px] left-[5%] w-32 h-32 rounded-full border-4 bg-neutral-600 border-neutral-900 overflow-hidden'>

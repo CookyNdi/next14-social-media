@@ -1,7 +1,9 @@
 import { FaRegBookmark, FaShare, FaRegComment, FaRegHeart, FaEye } from 'react-icons/fa';
 import { GiShare } from 'react-icons/gi';
 
-const ActionPost = () => {
+import { postDataType } from '@/types/post';
+
+const ActionPost = ({ data }: { data: postDataType }) => {
   return (
     <div className='flex justify-between mt-3'>
       <div className='text-neutral-400 text-sm flex gap-x-2 cursor-pointer hover:text-neutral-200'>
@@ -10,15 +12,15 @@ const ActionPost = () => {
       </div>
       <div className='text-neutral-400 text-sm flex gap-x-2 cursor-pointer hover:text-neutral-200'>
         <FaShare size={18} />
-        72
+        {data.respost_count}
       </div>
       <div className='text-neutral-400 text-sm flex gap-x-2 cursor-pointer hover:text-neutral-200'>
         <FaRegHeart size={18} />
-        365
+        {data.likes}
       </div>
       <div className='text-neutral-400 text-sm flex gap-x-2 cursor-pointer hover:text-neutral-200'>
         <FaEye size={18} />
-        2356
+        {data.view}
       </div>
       <div className='flex gap-x-4'>
         <FaRegBookmark
