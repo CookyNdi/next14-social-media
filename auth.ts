@@ -4,7 +4,7 @@ import { PrismaAdapter } from '@auth/prisma-adapter';
 
 import { db } from '@/lib/db';
 import authConfig from '@/auth.config';
-import { getUserById, getUserByUsername } from '@/lib/data/user';
+import { getUserById, getUserByUsername } from '@/data/user';
 import { UserRole } from '@prisma/client';
 
 export const {

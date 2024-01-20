@@ -2,7 +2,15 @@ import NextAuth from 'next-auth';
 import { pathToRegexp } from 'path-to-regexp';
 
 import authConfig from '@/auth.config';
-import { DEFAULT_LOGIN_REDIRECT, apiAuthPrefix, authRoutes, postRoute, profileRoute, publicRoutes } from '@/routes';
+import {
+  DEFAULT_LOGIN_REDIRECT,
+  apiAuthPrefix,
+  apiUploadThing,
+  authRoutes,
+  postRoute,
+  profileRoute,
+  publicRoutes,
+} from '@/routes';
 
 const { auth } = NextAuth(authConfig);
 
@@ -17,6 +25,10 @@ export default auth((req) => {
   const isPostRoute = !!pathToRegexp(postRoute).exec(nextUrl.pathname);
 
   if (isApiAuthRoute) {
+    return null;
+  }
+
+  if (apiUploadThing) {
     return null;
   }
 

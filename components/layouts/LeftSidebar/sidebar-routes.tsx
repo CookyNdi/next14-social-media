@@ -1,37 +1,15 @@
 'use client';
-import { FaHome, FaRegBookmark, FaUser } from 'react-icons/fa';
-import { IoSearch } from 'react-icons/io5';
-
-import SidebarItem from './sidebar.items';
+import SidebarItem from '@/components/layouts/LeftSidebar/sidebar-items';
+import { navRoutes } from '@/lib/navRoutes';
 import { Button } from '@/components/ui/button';
-
-export const routes = [
-  {
-    icon: FaHome,
-    label: 'Home',
-    href: '/',
-  },
-  {
-    icon: IoSearch,
-    label: 'Explore',
-    href: '/explore/search',
-  },
-  {
-    icon: FaRegBookmark,
-    label: 'Saved',
-    href: '/saved',
-  },
-  {
-    icon: FaUser,
-    label: 'Profile',
-    href: '/CookyNdi',
-  },
-];
+import { useCurrentUser } from '@/hooks/useCurrentUser';
 
 const SidebarRoutes = () => {
+  const user = useCurrentUser();
+  navRoutes[3].href = user!.username.slice(1);
   return (
     <div className='flex flex-col w-full'>
-      {routes.map((route) => (
+      {navRoutes.map((route) => (
         <SidebarItem key={route.href} icon={route.icon} label={route.label} href={route.href} />
       ))}
       <Button variant='purpleSecondary' className='mt-4'>

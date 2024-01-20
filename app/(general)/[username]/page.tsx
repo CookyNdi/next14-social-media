@@ -8,7 +8,7 @@ import getUserData from '@/actions/user/getUserData';
 
 const ProfilePage = async ({ params }: { params: { username: string } }) => {
   const user = await getUserData(params.username);
-  console.log(user);
+  // console.log(user);
   return (
     <div className='md:pl-[22%] md:pr-[30%] w-full h-auto pb-32'>
       <ProfileHeader user={user!} />

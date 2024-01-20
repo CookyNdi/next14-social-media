@@ -15,6 +15,11 @@ enum UserRole {
   USER
 }
 
+enum PostStatus {
+  POSTED
+  SCHEDULED
+}
+
 model User {
   id                    String                 @id @default(cuid())
   name                  String?
@@ -74,7 +79,7 @@ model Posts {
   type          String      @default("media")
   respost_count Int         @default(0)
   view          Int         @default(0)
-  status        String
+  status        PostStatus
   scheduled     DateTime?
   is_repost     Boolean     @default(false)
   repost_id     String?
