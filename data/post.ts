@@ -1,3 +1,5 @@
+import { parseISO, compareAsc } from 'date-fns';
+
 import { db } from '@/lib/db';
 import { getUserById } from './user';
 
@@ -22,7 +24,13 @@ export const getAllPost = async () => {
         };
       })
     );
-    return postIncludeImage;
+    const sorted = postIncludeImage.sort((a, b) => {
+      const createdAtA = parseISO(a.createdAt.toISOString());
+      const createdAtB = parseISO(b.createdAt.toISOString());
+
+      return compareAsc(createdAtB, createdAtA); // Menyortir secara descending, ubah ke compareAsc(createdAtA, createdAtB) untuk ascending
+    });
+    return sorted;
   } catch {
     return null;
   }
