@@ -2,6 +2,10 @@ import type { Metadata } from 'next';
 import { Roboto } from 'next/font/google';
 import '../globals.css';
 import { SessionProvider } from 'next-auth/react';
+import { NextSSRPlugin } from '@uploadthing/react/next-ssr-plugin';
+import { extractRouterConfig } from 'uploadthing/server';
+
+import { ourFileRouter } from '@/app/api/uploadthing/core';
 import { auth } from '@/auth';
 import Sidebar from '@/components/layouts/LeftSidebar/sidebar';
 import RightBar from '@/components/layouts/RightSideBar/right-bar';
@@ -20,6 +24,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
     <SessionProvider session={session}>
       <html lang='en'>
         <body className={roboto.className}>
+          <NextSSRPlugin routerConfig={extractRouterConfig(ourFileRouter)} />
           <main className='min-h-[100dvh] bg-neutral-900'>
             <Sidebar />
             <RightBar />
